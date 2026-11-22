@@ -16,16 +16,6 @@ Proyecto escolar de desarrollo web que simula una plataforma de comercio electr�
 * **JavaScript (Vanilla):** Lógica del carrito de compras, filtros e interactividad del sitio.
 * **VS Code:** Entorno de desarrollo utilizado para la codificación.
 
-##  Cómo ejecutar el proyecto localmente
-
-Al ser un proyecto desarrollado con tecnologías web estándar, no requiere instalación de dependencias ni servidores complejos:
-
-1. Clona este repositorio en tu computadora:
-   ```bash
-   git clone https://github.com
-   ```
-2. Abre la carpeta del proyecto en **Visual Studio Code**.
-3. Haz doble clic en el archivo `index.html` para abrirlo en tu navegador web (o utiliza la extensión **Live Server** en VS Code para visualizar los cambios en tiempo real).
 
 ##  Estructura del proyecto
 ```text
@@ -39,4 +29,4 @@ casta-exotics/
 ```
 
 ##  Nota académica
-Este sitio web fue creado exclusivamente con fines educativos como parte de un proyecto escolar. No realiza transacciones comerciales reales ni comercializa ejemplares vivos.
+Este sitio web fue creado exclusivamente con fines educativos como parte de un proyecto escolar. 
