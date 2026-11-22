@@ -12,32 +12,32 @@ const WHATSAPP = "000000000000"; // <- cambia por el número real (con lada de p
 const animales = [
   {
     id: 1, nombre: "Boa Constrictor", categoria: "Reptiles", especie: "Boa imperator", precio: 4500,
-    imagen: "https://images.unsplash.com/photo-1531386151447-fd76ad50012f?q=80&w=1000&auto=format&fit=crop",
+    imagen: "img/serpiente.avif",
     ficha: { temperatura: "Zona fría 26 °C, zona caliente 32 °C", habitat: "Terrario amplio con troncos para trepar y refugio", alimentacion: "Roedores adecuados a su tamaño cada 10-14 días", vida: "20-30 años", nivel: "Intermedio" }
   },
   {
     id: 2, nombre: "Python Regius", categoria: "Reptiles", especie: "Python regius", precio: 3200,
-    imagen: "https://images.unsplash.com/photo-1531386151447-fd76ad50012f?q=80&w=1000&auto=format&fit=crop",
+    imagen: "img/serpiente.avif",
     ficha: { temperatura: "Zona fría 26 °C, zona caliente 32 °C", habitat: "Terrario de 120 cm con escondites y humedad 50-60 %", alimentacion: "Ratones o ratas cada 7-14 días", vida: "20-30 años", nivel: "Principiante" }
   },
   {
     id: 3, nombre: "Gecko Leopardo", categoria: "Reptiles", especie: "Eublepharis macularius", precio: 1200,
-    imagen: "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?q=80&w=1000&auto=format&fit=crop",
+    imagen: "img/gecko.avif",
     ficha: { temperatura: "Zona caliente 30-32 °C, noche 20-24 °C", habitat: "Terrario seco con sustrato seguro y cueva húmeda", alimentacion: "Grillos y gusanos de harina suplementados con calcio", vida: "15-20 años", nivel: "Principiante" }
   },
   {
     id: 4, nombre: "Gecko Crestado", categoria: "Reptiles", especie: "Correlophus ciliatus", precio: 1800,
-    imagen: "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?q=80&w=1000&auto=format&fit=crop",
+    imagen: "img/gecko.avif",
     ficha: { temperatura: "22-26 °C (evitar más de 28 °C)", habitat: "Terrario vertical con plantas y humedad 60-80 %", alimentacion: "Dieta en polvo para crestados e insectos ocasionales", vida: "15-20 años", nivel: "Principiante" }
   },
   {
     id: 5, nombre: "Camaleón de Velo", categoria: "Reptiles", especie: "Chamaeleo calyptratus", precio: 2800,
-    imagen: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1000&auto=format&fit=crop",
+    imagen: "img/camaleon.avif",
     ficha: { temperatura: "Zona de asoleo 32-35 °C, ambiente 24-28 °C", habitat: "Jaula con malla ventilada, mucho follaje y luz UVB", alimentacion: "Grillos, langostas y hojas verdes; agua por goteo", vida: "5-8 años", nivel: "Avanzado" }
   },
   {
     id: 6, nombre: "Caimán de Anteojos", categoria: "Reptiles", especie: "Caiman crocodilus", precio: 9500,
-    imagen: "https://images.unsplash.com/photo-1471005197911-88e9d4a7834d?q=80&w=1000&auto=format&fit=crop",
+    imagen: "img/cocodrilo.avif",
     ficha: { temperatura: "Agua 28-30 °C, zona de asoleo 32-35 °C", habitat: "Estanque con área seca; requiere espacio muy grande al crecer", alimentacion: "Peces, insectos y roedores según edad", vida: "30-40 años", nivel: "Experto (requiere documentación legal)" }
   },
   {

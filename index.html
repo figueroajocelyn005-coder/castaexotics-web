@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Jost:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -21,13 +21,19 @@
       <a href="#inicio" class="logo">CASTA <span>EXOTICS</span></a>
       <nav class="nav">
         <ul class="nav__list">
-          <li class="nav_item"><a href="#inicio" class="nav_link">Inicio</a></li>
-          <li class="nav_item"><a href="#catalogo" class="nav_link">Catálogo</a></li>
-          <li class="nav_item"><a href="#nosotros" class="nav_link">Nosotros</a></li>
-          <li class="nav_item"><a href="#contacto" class="nav_link">Contacto</a></li>
+          <li class="nav__item"><a href="#inicio" class="nav__link">Inicio</a></li>
+          <li class="nav__item"><a href="#catalogo" class="nav__link">Catálogo</a></li>
+          <li class="nav__item"><a href="#nosotros" class="nav__link">Nosotros</a></li>
+          <li class="nav__item"><a href="#contacto" class="nav__link">Contacto</a></li>
         </ul>
       </nav>
-      <a href="https://wa.me/000000000000" target="_blank" class="btn btn--ghost">Consultar por WhatsApp</a>
+      <div class="header__actions">
+        <button class="cart-btn" id="cartOpen" aria-label="Abrir carrito">
+          <i class="bi bi-bag"></i>
+          <span class="cart-btn__count" id="cartCount">0</span>
+        </button>
+        <a href="https://wa.me/000000000000" target="_blank" class="btn btn--ghost header__wa">Consultar por WhatsApp</a>
+      </div>
       <button class="menu-toggle" aria-label="Abrir menú">
         <span></span>
         <span></span>
@@ -68,56 +74,24 @@
           </p>
         </div>
 
-        <div class="catalog__grid">
-          <article class="card">
-            <div class="card_image card_image--snakes">
-              <span class="card__tag">Serpientes</span>
-            </div>
-            <div class="card__content">
-              <h3 class="card__title">Serpientes</h3>
-              <p class="card__text">Boa constrictor, Python regius, Pitones y colubridos seleccionados.</p>
-              <a href="https://wa.me/000000000000?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20de%20serpientes."
-                target="blank" class="card_link">Consultar disponibilidad <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card_image card_image--geckos">
-              <span class="card__tag">Geckos</span>
-            </div>
-            <div class="card__content">
-              <h3 class="card__title">Geckos</h3>
-              <p class="card__text">Leopard Gecko, Crested Gecko, Gargoyle y 
-                morfos exclusivos.</p>
-              <a href="https://wa.me/000000000000?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20de%20geckos."
-                target="blank" class="card_link">Consultar disponibilidad <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card_image card_image--crocs">
-              <span class="card__tag">Cocodrilianos</span>
-            </div>
-            <div class="card__content">
-              <h3 class="card__title">Cocodrilos & Caimanes</h3>
-              <p class="card__text">Ejemplares con documentación y asesoramiento para tenencia responsable.</p>
-              <a href="https://wa.me/000000000000?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20de%20cocodrilianos."
-                target="blank" class="card_link">Consultar disponibilidad <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card_image card_image--others">
-              <span class="card__tag">Otros Exóticos</span>
-            </div>
-            <div class="card__content">
-              <h3 class="card__title">Otros exóticos</h3>
-              <p class="card__text">Lagartos, escincos, tortugas y especies puntuales bajo pedido.</p>
-              <a href="https://wa.me/000000000000?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20otras%20especies%20ex%C3%B3ticas."
-                target="blank" class="card_link">Consultar disponibilidad <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </article>
+        <!-- Buscador y filtros (JS: eventos input y click) -->
+        <div class="toolbar">
+          <div class="search">
+            <i class="bi bi-search"></i>
+            <input type="search" id="searchInput" placeholder="Buscar por nombre o especie..." autocomplete="off"
+              aria-label="Buscar ejemplares">
+          </div>
+          <div class="filters" id="filters">
+            <button class="filter is-active" data-category="Todos">Todos</button>
+            <button class="filter" data-category="Reptiles">Reptiles</button>
+            <button class="filter" data-category="Anfibios">Anfibios</button>
+            <button class="filter" data-category="Mamíferos">Mamíferos</button>
+          </div>
         </div>
+        <p class="results-info" id="resultsInfo" aria-live="polite"></p>
+
+        <!-- Las tarjetas las dibuja app.js a partir del arreglo de objetos -->
+        <div class="catalog__grid" id="catalogGrid"></div>
       </div>
     </section>
 
@@ -151,8 +125,7 @@
       <div class="container cta__container">
         <div>
           <p class="section__eyebrow">¿Buscas algo en concreto?</p>
-          <h2 class="section__title">Te ayudamos a encontrar el ejemplar 
-            ideal</h2>
+          <h2 class="section__title">Te ayudamos a encontrar el ejemplar ideal</h2>
           <p class="cta__text">Dinos la especie que buscas y te informamos de disponibilidad al momento.</p>
         </div>
         <a href="https://wa.me/000000000000?text=Hola%2C%20estoy%20buscando%20un%20ejemplar%20en%20concreto%2C%20%C2%BFpodr%C3%ADan%20ayudarme%3F"
@@ -162,13 +135,13 @@
 
     <section class="contact" id="contacto">
       <div class="container">
-        <div class="section_header section_header--center">
+        <div class="section__header section__header--center">
           <p class="section__eyebrow">Contacto</p>
           <h2 class="section__title">Hablemos</h2>
-          <p class="section__text">Respuesta ágil por WhatsApp. Sin formularios innecesarios.</p>
+          <p class="section__text">Respuesta ágil por WhatsApp o déjanos tu solicitud de reserva.</p>
         </div>
         <div class="contact__grid">
-          <a href="https://wa.me/000000000000" target="blank" class="contact_card">
+          <a href="https://wa.me/000000000000" target="_blank" class="contact__card">
             <i class="bi bi-whatsapp"></i>
             <div>
               <h3>WhatsApp</h3>
@@ -176,7 +149,7 @@
             </div>
             <i class="bi bi-arrow-up-right"></i>
           </a>
-          <a href="https://www.instagram.com/" target="blank" class="contact_card">
+          <a href="https://www.instagram.com/" target="_blank" class="contact__card">
             <i class="bi bi-instagram"></i>
             <div>
               <h3>Instagram</h3>
@@ -184,7 +157,7 @@
             </div>
             <i class="bi bi-arrow-up-right"></i>
           </a>
-          <div class="contact_card contact_card--static">
+          <div class="contact__card contact__card--static">
             <i class="bi bi-info-circle"></i>
             <div>
               <h3>Tenencia responsable</h3>
@@ -192,6 +165,41 @@
             </div>
           </div>
         </div>
+
+        <!-- Formulario con validación en JS (SweetAlert2) -->
+        <form class="form" id="contactForm" novalidate>
+          <h3 class="form__title">Reserva o solicitud de información</h3>
+          <div class="form__row">
+            <div class="form__field">
+              <label for="fNombre">Nombre completo</label>
+              <input type="text" id="fNombre" name="nombre" placeholder="Tu nombre">
+              <small class="form__error" data-error-for="fNombre"></small>
+            </div>
+            <div class="form__field">
+              <label for="fCorreo">Correo electrónico</label>
+              <input type="email" id="fCorreo" name="correo" placeholder="correo@ejemplo.com">
+              <small class="form__error" data-error-for="fCorreo"></small>
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="form__field">
+              <label for="fTelefono">Teléfono (10 dígitos)</label>
+              <input type="tel" id="fTelefono" name="telefono" placeholder="7861234567" inputmode="numeric">
+              <small class="form__error" data-error-for="fTelefono"></small>
+            </div>
+            <div class="form__field">
+              <label for="fInteres">Ejemplar de interés</label>
+              <select id="fInteres" name="interes"></select>
+              <small class="form__error" data-error-for="fInteres"></small>
+            </div>
+          </div>
+          <div class="form__field">
+            <label for="fMensaje">Mensaje</label>
+            <textarea id="fMensaje" name="mensaje" rows="4" placeholder="Cuéntanos qué buscas (mínimo 10 caracteres)"></textarea>
+            <small class="form__error" data-error-for="fMensaje"></small>
+          </div>
+          <button type="submit" class="btn btn--primary">Enviar solicitud</button>
+        </form>
       </div>
     </section>
   </main>
@@ -214,10 +222,9 @@
       <div class="footer__links">
         <h4>Catálogo</h4>
         <ul>
-          <li><a href="#catalogo">Serpientes</a></li>
-          <li><a href="#catalogo">Geckos</a></li>
-          <li><a href="#catalogo">Cocodrilianos</a></li>
-          <li><a href="#catalogo">Otros exóticos</a></li>
+          <li><a href="#catalogo">Reptiles</a></li>
+          <li><a href="#catalogo">Anfibios</a></li>
+          <li><a href="#catalogo">Mamíferos</a></li>
         </ul>
       </div>
     </div>
@@ -229,7 +236,33 @@
     </div>
   </footer>
 
+  <!-- Carrito lateral -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart" id="cartPanel" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="cart__head">
+      <h3>Tu carrito</h3>
+      <button class="icon-btn" id="cartClose" aria-label="Cerrar carrito"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="cart__items" id="cartItems"></div>
+    <div class="cart__foot">
+      <div class="cart__row"><span>Subtotal</span><strong id="cartSubtotal">$0</strong></div>
+      <div class="cart__row cart__row--total"><span>Total</span><strong id="cartTotal">$0</strong></div>
+      <button class="btn btn--primary cart__btn" id="cartCheckout">Pedir por WhatsApp</button>
+      <button class="btn btn--ghost cart__btn" id="cartClear">Vaciar carrito</button>
+    </div>
+  </aside>
+
+  <!-- Modal de ficha técnica -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="icon-btn modal__close" id="modalClose" aria-label="Cerrar ficha"><i class="bi bi-x-lg"></i></button>
+      <div class="modal__body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/script.js" defer></script>
+  <script src="js/app.js" defer></script>
 
 </body>
 
